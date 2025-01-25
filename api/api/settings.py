@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'user',
+    'documentation',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +86,10 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": "5432",
     }
+
+     
 }
+
 
 
 # Password validation

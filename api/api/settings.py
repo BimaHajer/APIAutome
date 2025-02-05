@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -50,6 +51,11 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'oauth2_provider',
 ]
+
+GOOGLE_CREDENTIALS_PATH = os.path.join(BASE_DIR, 'settings', 'authentification.json')
+GOOGLE_CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'authentification.json')
+
+GOOGLE_OAUTH2_CREDENTIALS_JSON = os.path.join(BASE_DIR, 'authentification.json')
 SITE_ID =1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
@@ -57,12 +63,10 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        'APP': {
-            'client_id': '49525902016-g0ktetr74iugffjgnf68jmrbe8avmbe8.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
- }
-}
+        'SCOPE': ['email', 'profile', 'openid', 'https://www.googleapis.com/auth/drive'],
+        'AUTH_PARAMS': {'access_type': 'offline'},
+        'OAUTH_PKCE_ENABLED': True,
+    }
 }
 
 

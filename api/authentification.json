@@ -1,0 +1,13 @@
+{
+    "web": {
+        "client_id": "49525902016-n0qfq6iuidud6qr723cosmrjdb7lr2an.apps.googleusercontent.com",
+        "project_id": "projet-api-449308",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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",
+        "redirect_uris": [
+            "http://localhost:8000/accounts/google/login/callback/"
+        ]
+    }
+}

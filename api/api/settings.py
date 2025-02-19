@@ -11,21 +11,43 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_TRUSTED_ORIGINS = [
+    'https://noticeably-fleet-seahorse.ngrok-free.app'
+]
+BASE_DIR = Path(__file__).resolve().parent.parent
+GOOGLE_CLIENT_SECRET_FILE = os.path.join(BASE_DIR, 'drive', 'client_secret.json')
+GOOGLE_SCOPES = [
+    'https://www.googleapis.com/auth/drive',
+    'https://www.googleapis.com/auth/drive.file'
+]
+GOOGLE_REDIRECT_URI = 'https://noticeably-fleet-seahorse.ngrok-free.app/drive/oauth2callback/'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-#mgfn+%ci!a)oc8+hw7j+rsiqr#^50zw-)mzk^oa-!n%mk3zo0'
+
+# SECURITY WARNING: don't ruoauth2callback/n with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '5fc1-102-171-95-171.ngrok-free.app','noticeably-fleet-seahorse.ngrok-free.app']
+
 SECRET_KEY = 'django-insecure-m9opn%j%wrchc7$%=k6-fo5$e#=2ms1u74220ii@kbbtsldu3l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -49,6 +71,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'oauth2_provider',
+    'drive'
 ]
 SITE_ID =1
 ACCOUNT_EMAIL_REQUIRED = True
